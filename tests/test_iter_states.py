@@ -21,5 +21,5 @@ import numpy as np
 def test_iter_states(n, expected):
     from rullo.solver import iter_states
     
-    assert list(iter_states(n)) == expected
+    assert all(list(iter_states(n)) == expected)
     
