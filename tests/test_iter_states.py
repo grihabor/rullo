@@ -3,11 +3,11 @@ import pytest
 
 @pytest.mark.parametrize('n,expected', [
     (1, [np.array([0]), 
-         np.array([1])),
+         np.array([1])]),
     (2, [np.array([0, 0]), 
          np.array([0, 1]),
          np.array([1, 0]),
-         np.array([1, 1])),
+         np.array([1, 1])]),
     (3, [np.array([0, 0, 0]), 
          np.array([0, 0, 1]), 
          np.array([0, 1, 0]),
