@@ -1,6 +1,6 @@
 import itertools
 import numpy as np
-from .checks import is_valid_line
+from .checks import is_line_valid
 
 
 def iter_states(n_pos):
@@ -17,7 +17,7 @@ def iter_valid_states(content, constraint):
     constraint: int
     """
     for state in iter_states(content.shape[0]):
-        if is_valid_line(content, state, constraint):
+        if is_line_valid(content, state, constraint):
             yield state
 
 
