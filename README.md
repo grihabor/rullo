@@ -1,2 +1,0 @@
-# rullo
-Rullo solver
