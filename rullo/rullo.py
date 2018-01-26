@@ -41,7 +41,7 @@ def is_board_valid(content,
     column_constraints: 1-dim array
         Array of constraints on columns
 
-        row_constraints.shape[0] == content.shape[1]
+        column_constraints.shape[0] == content.shape[1]
     """
     assert content.shape == state.shape
     assert row_constraints.shape[0] == content.shape[0]
