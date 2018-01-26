@@ -43,6 +43,10 @@ def is_board_valid(content,
 
         row_constraints.shape[0] == content.shape[1]
     """
+    assert content.shape == state.shape
+    assert row_constraints.shape[0] == content.shape[0]
+    assert column_constraints.shape[0] == content.shape[1]
+
     values = content * state
     return all([
         np.all(np.sum(values, axis=1) == row_constraints),
