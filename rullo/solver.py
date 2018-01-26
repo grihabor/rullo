@@ -1,5 +1,6 @@
 import itertools
 import numpy as np
+from .checks import is_valid_line
 
 
 def iter_states(n_pos):
@@ -7,5 +8,18 @@ def iter_states(n_pos):
     yield from map(np.array, it)
     
 
-def find_valid_states(content, constraint):
-    pass
+def iter_valid_states(content, constraint):
+    """
+    
+    Attributes
+    ----------
+    content: 1-dim array
+    constraint: int
+    """
+    for state in iter_states(content.shape[0]):
+        if is_valid_line(content, state, constraint):
+            yield state
+
+
+def valid_states_set(content, constraint):
+    return set(iter_valid_states(content, constraint))
