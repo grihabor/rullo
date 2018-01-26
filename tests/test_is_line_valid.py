@@ -10,6 +10,6 @@ import numpy as np
     (np.array([2, 5, 4, 8, 2]), np.array([0, 0, 0, 0, 0]), 10, False),
 ])
 def test_is_line_valid(content, state, constraint, result):
-    from rullo.rullo import is_line_valid
-    
+    from rullo.checks import is_line_valid
+
     assert result == is_line_valid(content, state, constraint)
