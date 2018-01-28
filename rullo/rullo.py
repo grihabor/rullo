@@ -46,3 +46,7 @@ class Rullo:
         return cls(content,
                    row_constraints,
                    column_constraints)
+    
+    def solve():
+        pass
+        
