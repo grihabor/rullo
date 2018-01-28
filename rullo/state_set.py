@@ -15,6 +15,9 @@ class StateSet:
         self._states = _state_set_filter(self._states, index, flag)
         return self
 
+    def __repr__(self):
+        return repr(self._states)
+
 
 def _state_set_filter(states, index, flag):
     """
@@ -29,4 +32,4 @@ def _state_set_filter(states, index, flag):
     -------
     Filtered set of states
     """
-    return np.extract(states[:, index] == flag, states)
+    return states[states[:, index] == flag]
