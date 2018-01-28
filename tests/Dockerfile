@@ -3,6 +3,9 @@ MAINTAINER Borodin Gregory <grihabor@mail.ru>
 
 WORKDIR /project
 
+ADD requirements.txt .
+RUN pip3 install -r requirements.txt
+
 ADD . .
 RUN pip3 install .
 

@@ -8,13 +8,15 @@ URL = 'https://github.com/grihabor/rullo'
 EMAIL = 'grihabor@mail.ru'
 AUTHOR = 'Borodin Gregory'
 
-REQUIRED = [
-    'numpy',
-]
-
 
 def _get_project_path():
     return os.path.abspath(os.path.join(__file__, os.pardir))
+
+
+def _get_requirements():
+    path = os.path.join(_get_project_path(), 'requirements.txt')
+    with open(path, 'r') as f:
+        return list(f)
 
 
 def get_version():
@@ -43,7 +45,7 @@ def main():
         author_email=EMAIL,
         url=URL,
         packages=find_packages(exclude=('tests',)),
-        install_requires=REQUIRED,
+        install_requires=_get_requirements(),
         setup_requires=[
             'pytest-runner',
         ],
