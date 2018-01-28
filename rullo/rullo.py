@@ -27,8 +27,8 @@ class Rullo:
         self.column_constraints = column_constraints
         self.state = (
             np.zeros(content.shape, dtype=np.int)
-            if not shape
-            else shape
+            if not state
+            else state
         )
 
     @classmethod
