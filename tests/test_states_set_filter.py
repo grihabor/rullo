@@ -7,7 +7,7 @@ _states = [
 ]
 
 @pytest.mark.parametrize('states,index,flag,expected', map((
-    lambda: s,i,f,e: s,i,f,s[e]
+    lambda s,i,f,e: s,i,f,s[e]
 ), [
     (_states, 0, 0, [1, 2]),
     (_states, 0, 1, [0]),
