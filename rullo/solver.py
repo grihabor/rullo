@@ -28,25 +28,6 @@ def valid_states_set(content, constraint):
     return set(iter_valid_states(content, constraint))
     
 
-def state_set_filter(states_set, index, flag):
-    """
-    
-    Attributes
-    ----------
-    states_set: set of 1-dim arrays
-    index: int
-    flag: 0 or 1
-    
-    Returns
-    -------
-    Filtered set of states
-    """
-    return set(
-        state
-        for state
-        in states_set
-        if state[index] == flag
-    )
     
     
 def states_sets_intersection(states_sets, 
