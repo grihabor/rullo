@@ -42,13 +42,5 @@ def states_sets_intersection(states_sets,
 
     
 
-def solve_board(rullo):
-    state_storage = [
-        
-    ]
-    # key - (row, column, flag)
-    # value - 
-    
-
 
 

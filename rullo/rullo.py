@@ -47,6 +47,15 @@ class Rullo:
                    row_constraints,
                    column_constraints)
     
-    def solve():
-        pass
-        
+    def solve(self):
+        self.state = _solve_board(self)
+        return self
+
+
+def _solve_board(rullo):
+    state_storage = [
+
+    ]
+    # key - (row, column, flag)
+    # value -
+
