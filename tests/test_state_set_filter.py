@@ -25,12 +25,12 @@ _states = np.array([
     (_states, 4, 1, [0, 2]),
 ]))
 def test_state_set_filter(states, index, flag, expected):
-    from rullo.solver import states_set_filter
+    from rullo.solver import state_set_filter
     from rullo.state_set import StateSet
     
     states_set = StateSet(states)
     expected_set = StateSet(expected)
-    assert expected_set == states_set_filter(
+    assert expected_set == state_set_filter(
         states_set,      
         index,   
         flag,

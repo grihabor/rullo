@@ -28,7 +28,7 @@ def valid_states_set(content, constraint):
     return set(iter_valid_states(content, constraint))
     
 
-def states_set_filter(states_set, index, flag):
+def state_set_filter(states_set, index, flag):
     """
     
     Attributes
@@ -53,8 +53,8 @@ def states_sets_intersection(states_sets,
                              indices):
     
     outcomes = [(
-        states_set_filter(states_sets[0], indices[0], flag),
-        states_set_filter(states_sets[1], indices[1], flag),
+        state_set_filter(states_sets[0], indices[0], flag),
+        state_set_filter(states_sets[1], indices[1], flag),
     ) for flag in [0, 1]]
     
     return outcomes

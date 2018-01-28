@@ -10,4 +10,3 @@ class StateSet:
 
     def __eq__(self, other):
         return np.all(self._states == other._states)
-    
