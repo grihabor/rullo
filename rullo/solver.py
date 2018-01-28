@@ -60,7 +60,11 @@ def states_sets_intersection(states_sets,
 def find_indefeasible_indices(states_set):
     it = iter(states_set)
     start = next(it)
-    result = reduce(lambda x,y: x*y, it, start)
+    result = itertools.reduce(
+        lambda x,y: x*y, 
+        it, 
+        start,
+    )
     return [
         i 
         for i, flag 
