@@ -1,6 +1,10 @@
 import numpy as np
 import csv
 
+from rullo.solver import iter_valid_states
+from rullo.state_set import StateSet
+
+
 class Rullo:
     def __init__(self,
                  content,
@@ -52,10 +56,17 @@ class Rullo:
         return self
 
 
-def _solve_board(rullo):
-    state_storage = [
-
+def _all_state_sets(content, constraints):
+    return [
+        StateSet(iter_valid_states(row, constraint))
+        for row, constraint
+        in zip(content, constraints)
     ]
-    # key - (row, column, flag)
-    # value -
+
+
+def _solve_board(rullo: Rullo):
+    state_storage = [
+        _all_state_sets(rullo.content, rullo.row_constraints),
+        _all_state_sets(np.transpose(rullo.content), rullo.column_constraints)
+    ]
 
