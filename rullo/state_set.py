@@ -7,3 +7,7 @@ class StateSet:
         
     def __iter__(self):
         yield from self._states
+
+    def __eq__(self, other):
+        return np.all(self._states == other._states)
+    
