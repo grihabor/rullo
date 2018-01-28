@@ -1,4 +1,5 @@
 import itertools
+import functools
 import numpy as np
 from .checks import is_line_valid
 
@@ -60,7 +61,7 @@ def states_sets_intersection(states_sets,
 def find_indefeasible_indices(states_set):
     it = iter(states_set)
     start = next(it)
-    result = itertools.reduce(
+    result = functools.reduce(
         lambda x,y: x*y, 
         it, 
         start,
