@@ -1,4 +1,5 @@
 import pytest
+import numpy as np
 
 _states = [
     np.array([1,1,0,0,1]),
