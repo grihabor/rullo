@@ -13,7 +13,7 @@ import pytest
 def test_find_indefeasible_indices(states, expected):
     from rullo.solver import find_indefeasible_indices
     
-    states_set = set(map(
+    state_set = set(map(
         tuple, states
     ))
     
