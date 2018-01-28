@@ -11,12 +11,10 @@ import pytest
       [1,1,1,0,0]], [0, 3]),
 ])
 def test_find_indefeasible_indices(states, expected):
-    from rullo.solver import find_indefeasible_indices
+    from rullo.state_set import StateSet
     
-    state_set = set(map(
-        tuple, states
-    ))
-    
-    assert set(expected) == set(find_indefeasible_indices(state_set))
+    state_set = StateSet(states)
+
+    assert set(expected) == state_set.indefeasible_indices()
     
     

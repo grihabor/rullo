@@ -1,3 +1,4 @@
+import functools
 import numpy as np
 
 
@@ -18,6 +19,9 @@ class StateSet:
     def __repr__(self):
         return repr(self._states)
 
+    def indefeasible_indices(self):
+        return _indefeasible_indices(self._states)
+
 
 def _state_set_filter(states, index, flag):
     """
@@ -33,3 +37,16 @@ def _state_set_filter(states, index, flag):
     Filtered set of states
     """
     return states[states[:, index] == flag]
+
+
+def _indefeasible_indices(states):
+    """
+
+    Attributes
+    ----------
+    states: 2-dim array
+
+    """
+    zeros = np.logical_and.reduce(states, axis=0)
+    ones = np.logical_and.reduce(np.logical_not(states), axis=0)
+    return set(np.where(zeros)) + set(np.where(ones))

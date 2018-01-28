@@ -40,21 +40,6 @@ def states_sets_intersection(states_sets,
     
     return outcomes
 
-
-def find_indefeasible_indices(state_set: StateSet):
-    it = iter(state_set)
-    start = next(it)
-    result = functools.reduce(
-        lambda x,y: x*y, 
-        it, 
-        start,
-    )
-    return [
-        i 
-        for i, flag 
-        in enumerate(result)
-        if flag
-    ]
     
 
 def solve_board(rullo):
