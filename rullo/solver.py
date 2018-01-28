@@ -57,6 +57,9 @@ def states_sets_intersection(states_sets,
     return outcomes
 
 
+def find_indefeasible_indices(states_set):
+    pass
+    
 
 def solve_board(rullo):
     state_storage = [

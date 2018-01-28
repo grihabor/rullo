@@ -6,8 +6,9 @@ _states = [
     np.array([0,0,1,0,1]),
 ]
 
-@pytest.mark.parametrize('states,index,flag,expected', map(
-    lambda: s,i,f,e: s,i,f,s[e], [
+@pytest.mark.parametrize('states,index,flag,expected', map((
+    lambda: s,i,f,e: s,i,f,s[e]
+), [
     (_states, 0, 0, [1, 2]),
     (_states, 0, 1, [0]),
     (_states, 1, 0, [2]),
