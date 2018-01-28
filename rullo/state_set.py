@@ -49,4 +49,6 @@ def _indefeasible_indices(states):
     """
     zeros = np.logical_and.reduce(states, axis=0)
     ones = np.logical_and.reduce(np.logical_not(states), axis=0)
-    return set(np.where(zeros)) + set(np.where(ones))
+    return set(
+        np.where(ones)[0].tolist() + np.where(zeros)[0].tolist()
+    )
