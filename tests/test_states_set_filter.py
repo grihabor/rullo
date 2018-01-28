@@ -1,11 +1,14 @@
 import pytest
 import numpy as np
+import itertools
+
 
 _states = [
     np.array([1,1,0,0,1]),
     np.array([0,1,0,1,0]),
     np.array([0,0,1,0,1]),
 ]
+
 
 @pytest.mark.parametrize('states,index,flag,expected', itertools.starmap((
     lambda s,i,f,e: (s,i,f,s[e])
