@@ -74,12 +74,12 @@ def _outcome_intersection(outcomes):
 def _indices_to_outcome(indices, prev_outcome):
     flat = itertools.chain.from_iterable(indices)
     c = Counter(flat)
-    return [
+    nested = [
         [
             (
                 prev_outcome[index] + (i,)
                 if c[index] > 1
-                else index
+                else prev_outcome[index]
             )
             for index
             in index_list
@@ -87,6 +87,7 @@ def _indices_to_outcome(indices, prev_outcome):
         for i, index_list
         in enumerate(indices)
     ]
+    return sum(nested, [])
 
 
 def _calculate_outcomes(target_state_set, *dependencies):
