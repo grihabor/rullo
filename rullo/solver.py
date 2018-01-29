@@ -71,7 +71,7 @@ def _outcome_intersection(outcomes):
 
 
 def _indices_to_outcome(indices, prev_outcome):
-    flat = sum(indices)
+    flat = itertools.chain.from_iterable(indices)
     c = Counter(flat)
     return [
         [
