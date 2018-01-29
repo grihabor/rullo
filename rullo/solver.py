@@ -71,7 +71,7 @@ def _outcome_intersection(outcomes):
 
 
 def _indices_to_outcome(indices, prev_outcome):
-    flat = functools.reduce(sum, indices, [])
+    flat = sum(indices)
     c = Counter(flat)
     return [
         [
