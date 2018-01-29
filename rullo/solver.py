@@ -1,6 +1,7 @@
 import itertools
 import functools
 import numpy as np
+from collections import Counter
 
 from rullo.state_set import StateSet
 from .checks import is_line_valid
