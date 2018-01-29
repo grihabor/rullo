@@ -70,16 +70,21 @@ def _outcome_intersection(outcomes):
     return new_outcomes
 
 
-def _indices_to_outcome(indices):
+def _indices_to_outcome(indices, prev_outcome):
     flat = functools.reduce(sum, indices, [])
     c = Counter(flat)
     return [
         [
+            (
+                prev_outcome[index] + (i,)
+                if c[index] > 1
+                else index
+            )
             for index
             in index_list
         ]
-        for index_list
-        in indices
+        for i, index_list
+        in enumerate(indices)
     ]
 
 
