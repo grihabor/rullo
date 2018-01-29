@@ -15,4 +15,4 @@ def test_indices_to_outcome():
         (2, 2),
     ]
 
-    assert all(expected == _indices_to_outcome(indices, outcome))
+    assert expected == _indices_to_outcome(indices, outcome)
