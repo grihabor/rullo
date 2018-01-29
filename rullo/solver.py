@@ -54,10 +54,43 @@ def _matching_outcome_indices(target_state_set, dependency):
     ] for state in target_state_set]
 
 
+def _outcome_intersection(outcomes):
+    if len(outcomes) == 1:
+        outcome = outcomes[0]
+        new_outcomes = [
+            outcome + (index,)
+            for index, outcome
+            in outcome
+        ]
+    else:
+        new_outcomes = [
+            
+        ]
+
+    return new_outcomes
+
+
+def _indices_to_outcome(indices):
+    flat = functools.reduce(sum, indices, [])
+    c = Counter(flat)
+    return [
+        [
+            for index
+            in index_list
+        ]
+        for index_list
+        in indices
+    ]
+
+
 def _calculate_outcomes(target_state_set, *dependencies):
     if not dependencies:
         return _initialize_outcome(target_state_set)
 
+    outcomes = []
+
     for dep in dependencies:
-        state_set = dep.state_set
+        indices = _matching_outcome_indices(target_states_set, dep)
+        outcomes.append(indices)
+
 
