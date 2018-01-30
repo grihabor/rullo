@@ -7,7 +7,7 @@ def _have_the_same_beginning(x, y):
     return any([
         x == y[:len(x)],
         y == x[:len(y)],
-    )
+    ])
 
 
 def _longest(x, y):
