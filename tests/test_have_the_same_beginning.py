@@ -1,3 +1,5 @@
+import pytest
+
 
 @pytest.mark.parametrize('pair,expected', [
     ([(1,), (1,3,3,)], True),
