@@ -10,6 +10,6 @@ import pytest
 def test_outcome_intersection(outcomes, expected):
     from rullo.intersection import _outcome_intersection
 
-    assert set(expected) == set(_outcome_intersection(*outcomes))
+    assert set(expected) == set(_outcome_intersection(outcomes))
 
 
