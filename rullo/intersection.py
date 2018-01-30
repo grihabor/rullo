@@ -18,13 +18,15 @@ def _longest(x, y):
     )
 
 
-def _intersect(outcome_1, outcome_2):
-    product = itertools.product(outcome_1, outcome_2)
-    result = []
-    for item_1, item_2 in product:
-        if _have_the_same_beginning(item_1, item_2):
-            result.append(_longest(*pair))
-    return result
+def _intersect(outcome_pair):
+    assert 2 == len(outcome_pair) 
+    
+    product = itertools.product(*outcome_pair)
+    return [
+        _longest(*pair)
+        for pair in product
+        if _have_the_same_beginning(*pair)
+    ]
     
 
 def _outcome_intersection(outcomes):
