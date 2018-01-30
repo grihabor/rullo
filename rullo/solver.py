@@ -25,10 +25,6 @@ def iter_valid_states(content, constraint):
             yield state
 
 
-def valid_states_set(content, constraint):
-    return set(iter_valid_states(content, constraint))
-
-
 class Dependency:
     def __init__(self, state_set, index_pair, outcome):
         self.state_set = state_set
