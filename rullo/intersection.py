@@ -24,7 +24,8 @@ def _intersect(outcome_1, outcome_2):
     for item_1, item_2 in product:
         if _have_the_same_beginning(item_1, item_2):
             result.append(_longest(*pair))
-
+    return result
+    
 
 def _outcome_intersection(outcomes):
 
@@ -34,23 +35,16 @@ def _outcome_intersection(outcomes):
         outcome[0],
     )
     
+    c = Counter(result)
+    outcome = [
+        (
+            item + (index,)
+            if c[item] > 1
+            else item
+        )
+        for index, item
+        in enumerate(result)
+    ]
     
+    return outcome
     
-
-    if len(outcomes) == 1:
-        outcome = outcomes[0]
-        c = Counter(outcome)
-        new_outcomes = [
-            (
-                outcome_tuple + (index,)
-                if c[outcome
-            )
-            for index, outcome_tuple
-            in outcome
-        ]
-    else:
-        new_outcomes = [
-            
-        ]
-
-    return new_outcomes
