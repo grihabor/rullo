@@ -55,12 +55,49 @@ def _matching_outcome_indices(target_state_set, dependency):
     ] for state in target_state_set]
 
 
+def _have_the_same_beginning(x, y):
+    return any([
+        x == y[:len(x)],
+        y == x[:len(y)],
+    )
+
+
+def _longest(x, y):
+    return (
+        x
+        if len(x) > len(y)
+        else y
+    )
+
+
+def _intersect(outcome_1, outcome_2):
+    product = itertools.product(outcome_1, outcome_2)
+    result = []
+    for item_1, item_2 in product:
+        if _have_the_same_beginning(item_1, item_2):
+            result.append(_longest(*pair))
+
+
 def _outcome_intersection(outcomes):
+
+    result = functools.reduce(
+        _intersect,
+        outcome[1:],
+        outcome[0],
+    )
+    
+    
+    
+
     if len(outcomes) == 1:
         outcome = outcomes[0]
+        c = Counter(outcome)
         new_outcomes = [
-            outcome + (index,)
-            for index, outcome
+            (
+                outcome_tuple + (index,)
+                if c[outcome
+            )
+            for index, outcome_tuple
             in outcome
         ]
     else:
@@ -98,6 +135,7 @@ def _calculate_outcomes(target_state_set, *dependencies):
 
     for dep in dependencies:
         indices = _matching_outcome_indices(target_states_set, dep)
-        outcomes.append(indices)
+        outcome = _indices_to_outcome(indices, dep.outcome)
+        outcomes.append(outcome)
 
 
