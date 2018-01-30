@@ -18,7 +18,7 @@ def _longest(x, y):
     )
 
 
-def _intersect(outcome_pair):
+def _intersect(*outcome_pair):
     assert 2 == len(outcome_pair) 
     
     product = itertools.product(*outcome_pair)
