@@ -3,8 +3,9 @@ import functools
 import numpy as np
 from collections import Counter
 
-from rullo.state_set import StateSet
+from .state_set import StateSet
 from .checks import is_line_valid
+from .intersection import _outcome_intersection
 
 
 def iter_states(n_pos):
@@ -83,4 +84,5 @@ def _calculate_outcomes(target_state_set, *dependencies):
         outcome = _indices_to_outcome(indices, dep.outcome)
         outcomes.append(outcome)
 
+    return _outcome_intersection(outcomes)
 
