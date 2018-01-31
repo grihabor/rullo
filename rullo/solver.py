@@ -23,7 +23,7 @@ def iter_valid_states(content, constraint):
     constraint: int
     """
     assert len(content.shape) == 1
-    assert len(content.shape[0]) > 0
+    assert content.shape[0] > 0
     
     for state in iter_states(content.shape[0]):
         if is_line_valid(content, state, constraint):
