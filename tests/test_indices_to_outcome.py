@@ -7,12 +7,12 @@ def test_indices_to_outcome():
 
     outcome = [(0,), (1,), (2,),]
     indices = [[0], [1, 2], [1, 2]]
-    expected = [
+    expected = Outcome([
         (0,),
         (1, 1),
         (2, 1),
         (1, 2),
         (2, 2),
-    ]
+    ])
 
     assert expected == _indices_to_outcome(indices, outcome)
