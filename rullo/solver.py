@@ -21,6 +21,9 @@ def iter_valid_states(content, constraint):
     content: 1-dim array
     constraint: int
     """
+    assert len(content.shape) == 1
+    assert len(content.shape[0]) > 0
+    
     for state in iter_states(content.shape[0]):
         if is_line_valid(content, state, constraint):
             yield state
@@ -28,6 +31,8 @@ def iter_valid_states(content, constraint):
 
 class Dependency:
     def __init__(self, state_set, index_pair, outcome):
+        assert isinstance(state_set, StateSet)
+        
         self.state_set = state_set
         self.index_pair = index_pair
         self.outcome = outcome
