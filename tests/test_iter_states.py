@@ -19,9 +19,9 @@ import numpy as np
                   [1, 1, 1]])),
 ])
 def test_iter_states(n, expected):
-    from rullo.solver import iter_states
+    from rullo.solver import iter_all_states
     
     assert np.all(
-        np.array(list(iter_states(n))) == expected
+        np.array(list(iter_all_states(n))) == expected
     )
     

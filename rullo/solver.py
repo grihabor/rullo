@@ -9,7 +9,7 @@ from .intersection import _outcome_intersection
 from .outcome import Outcome
 
 
-def iter_states(n_pos):
+def iter_all_states(n_pos):
     it = itertools.product([0, 1], repeat=n_pos)
     yield from map(np.array, it)
 
@@ -25,7 +25,7 @@ def iter_valid_states(content, constraint):
     assert len(content.shape) == 1
     assert content.shape[0] > 0
     
-    for state in iter_states(content.shape[0]):
+    for state in iter_all_states(content.shape[0]):
         if is_line_valid(content, state, constraint):
             yield state
 
