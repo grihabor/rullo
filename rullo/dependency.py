@@ -12,7 +12,7 @@ class Dependency:
         self.outcome = outcome
 
     def __repr__(self):
-        return '<Dependency[{}, {}, {}]>'.format(
+        return '<Dependency state_set={}, index_pair={}, outcome={}]>'.format(
             self.state_set,
             self.index_pair,
             self.outcome,
