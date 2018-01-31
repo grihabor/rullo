@@ -30,7 +30,7 @@ class Rullo:
         self.row_constraints = np.asarray(row_constraints, dtype=np.int)
         self.column_constraints = np.asarray(column_constraints, dtype=np.int)
         self.state = (
-            np.zeros(content.shape, dtype=np.bool)
+            np.zeros(self.content.shape, dtype=np.bool)
             if not state
             else np.asarray(state, dtype=np.bool)
         )
