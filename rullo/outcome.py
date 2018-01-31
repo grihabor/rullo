@@ -2,15 +2,22 @@
 class Outcome:
     def __init__(self, variants=None):
         self._variants = (
-            variants
+            set(variants)
             if variants
-            else []
+            else set()
         )
 
     @classmethod
     def from_state_set(state_set):
-        return Outcome([
+        return Outcome({
             (index,)
             for index
             in range(len(state_set))
-        ])
+        })
+    
+    def __repr__(self):
+        return '<Outcome {}>'.format(self._variants)
+        
+    def __eq__(self, other):
+        return self._variants == other._variants
+        
