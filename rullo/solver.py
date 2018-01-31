@@ -6,7 +6,7 @@ from collections import Counter
 from .state_set import StateSet
 from .checks import is_line_valid
 from .intersection import _outcome_intersection
-from .outcome import outcome
+from .outcome import Outcome
 
 
 def iter_states(n_pos):
