@@ -31,22 +31,22 @@ def _intersect(*outcome_pair):
 
 def _outcome_intersection(outcomes):
 
-    result = functools.reduce(
+    intersection = functools.reduce(
         _intersect,
-        outcome[1:],
-        outcome[0],
+        outcomes[1:],
+        outcomes[0],
     )
     
-    c = Counter(result)
-    outcome = [
+    c = Counter(intersection)
+    result = [
         (
             item + (index,)
             if c[item] > 1
             else item
         )
         for index, item
-        in enumerate(result)
+        in enumerate(intersection)
     ]
     
-    return outcome
+    return result
     
