@@ -109,7 +109,7 @@ def get_final_outcomes(rullo):
     row_pairs = []
     column_pairs = []
     
-    for i in range(max(rullo.content.shape))
+    for i in range(max(rullo.content.shape)):
         if i < rullo.content.shape[0]:
             _cycle(
                 rullo.content[i, :], 
