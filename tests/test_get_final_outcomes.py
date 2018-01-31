@@ -16,9 +16,9 @@ import pytest
 ])
 def test_get_final_outcomes(content, row_constraints, column_constraints, expected):
     from rullo.rullo import Rullo
-    from rullo.solver import get_final_outcomes
+    from rullo.solver import calculate_final_outcome
 
     rullo = Rullo(content, row_constraints, column_constraints)
-    assert set(expected) == set(get_final_outcomes(rullo))
+    assert set(expected) == set(calculate_final_outcome(rullo))
 
 

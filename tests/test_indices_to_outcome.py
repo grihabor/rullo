@@ -3,7 +3,7 @@ import numpy as np
 
 
 def test_indices_to_outcome():
-    from rullo.solver import _indices_to_outcome
+    from rullo.solver import calculate_outcome_from_indices
     from rullo.outcome import Outcome
     
     outcome = [(0,), (1,), (2,),]
@@ -16,4 +16,4 @@ def test_indices_to_outcome():
         (2, 2),
     ])
 
-    assert expected == _indices_to_outcome(indices, outcome)
+    assert expected == calculate_outcome_from_indices(indices, outcome)

@@ -40,7 +40,7 @@ class Dependency:
         self.outcome = outcome
 
 
-def _matching_outcome_indices(target_state_set, dependency):
+def calculate_matching_indices(target_state_set, dependency):
     dep = dependency
     print(target_state_set[0])
     return [[
@@ -51,9 +51,7 @@ def _matching_outcome_indices(target_state_set, dependency):
     ] for state in target_state_set]
 
 
-
-
-def _indices_to_outcome(indices, prev_outcome):
+def calculate_outcome_from_indices(indices, prev_outcome):
     flat = itertools.chain.from_iterable(indices)
     c = Counter(flat)
     nested = [
@@ -76,7 +74,7 @@ class SolveError(Exception):
     pass
 
 
-def _calculate_outcomes(target_state_set, *dependencies):
+def calculate_outcome_dependency_intersection(target_state_set, *dependencies):
     if target_state_set.is_empty():
         raise SolveError('Target state set is empty')
     
@@ -86,14 +84,14 @@ def _calculate_outcomes(target_state_set, *dependencies):
     outcomes = []
 
     for dep in dependencies:
-        indices = _matching_outcome_indices(target_state_set, dep)
-        outcome = _indices_to_outcome(indices, dep.outcome)
+        indices = calculate_matching_indices(target_state_set, dep)
+        outcome = calculate_outcome_from_indices(indices, dep.outcome)
         outcomes.append(outcome)
 
     return _outcome_intersection(outcomes)
 
 
-def _cycle(content, constraint, pairs):
+def calculate_next_outcome_pair(content, constraint, pairs):
     """
     
     Attributes
@@ -112,19 +110,19 @@ def _cycle(content, constraint, pairs):
         in enumerate(pairs)
     ]
             
-    outcome = _calculate_outcomes(target_state_set, *deps)
+    outcome = calculate_outcome_dependency_intersection(target_state_set, *deps)
     
     return target_state_set, outcome
             
 
-def get_final_outcomes(rullo):
+def calculate_final_outcome(rullo):
 
     row_pairs = []
     column_pairs = []
     
     for i in range(max(rullo.content.shape)):
         if i < rullo.content.shape[0]:
-            pair = _cycle(
+            pair = calculate_next_outcome_pair(
                 rullo.content[i, :], 
                 rullo.row_constraints[i],
                 row_pairs,
@@ -132,7 +130,7 @@ def get_final_outcomes(rullo):
             row_pairs.append(pair)
             
         if i < rullo.content.shape[1]:
-            pair = _cycle(
+            pair = calculate_next_outcome_pair(
                 rullo.content[:, i], 
                 rullo.column_constraints[i],
                 column_pairs,

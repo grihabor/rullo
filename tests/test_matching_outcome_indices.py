@@ -25,7 +25,7 @@ _states = np.array([
     ),
 ])
 def test_matching_outcome_indices(target, indices, outcome, expected):
-    from rullo.solver import _matching_outcome_indices, Dependency
+    from rullo.solver import calculate_matching_indices, Dependency
     from rullo.state_set import StateSet
     from rullo.outcome import Outcome
     
@@ -33,6 +33,6 @@ def test_matching_outcome_indices(target, indices, outcome, expected):
     outcome = Outcome(outcome)
     dependency = Dependency(state_set, indices, outcome)
 
-    assert expected == _matching_outcome_indices(state_set, dependency)
+    assert expected == calculate_matching_indices(state_set, dependency)
 
 
