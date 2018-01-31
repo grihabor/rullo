@@ -26,13 +26,13 @@ class Rullo:
 
             column_constraints.shape[0] == content.shape[1]
         """
-        self.content = content
-        self.row_constraints = row_constraints
-        self.column_constraints = column_constraints
+        self.content = np.asarray(content, dtype=np.int)
+        self.row_constraints = np.asarray(row_constraints, dtype=np.int)
+        self.column_constraints = np.asarray(column_constraints, dtype=np.int)
         self.state = (
-            np.zeros(content.shape, dtype=np.int)
+            np.zeros(content.shape, dtype=np.bool)
             if not state
-            else state
+            else np.asarray(state, dtype=np.bool)
         )
 
     @classmethod
