@@ -75,6 +75,7 @@ def _indices_to_outcome(indices, prev_outcome):
 class SolveError(Exception):
     pass
 
+
 def _calculate_outcomes(target_state_set, *dependencies):
     if target_state_set.is_empty():
         raise SolveError('Target state set is empty')
@@ -85,7 +86,7 @@ def _calculate_outcomes(target_state_set, *dependencies):
     outcomes = []
 
     for dep in dependencies:
-        indices = _matching_outcome_indices(target_states_set, dep)
+        indices = _matching_outcome_indices(target_state_set, dep)
         outcome = _indices_to_outcome(indices, dep.outcome)
         outcomes.append(outcome)
 

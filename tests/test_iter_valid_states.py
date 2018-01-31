@@ -2,30 +2,52 @@ import pytest
 import numpy as np
 
 
-@pytest.mark.parametrize('content,constraint,valid,expected', [
-    (np.array([3,2,5,6,4]), 8, True, [np.array([1,0,1,0,0]),
-                                      np.array([0,1,0,1,0])]),
-    (np.array([3,2,5,6,4]), 5, False, [np.array([1,0,1,0,0]),
-                                       np.array([0,1,0,1,0])]),     
-    (np.array([3,2,5,6,4]), 8, False, [np.array([1,0,1,0,0])]),                                                                
-    (np.array([3,3,2,3]), 6, True, [np.array([1,1,0,0]),
-                                    np.array([1,0,0,1]),
-                                    np.array([0,1,0,1])]),
-    (np.array([3,3,2,3]), 6, False, [np.array([1,0,0,1]),
-                                     np.array([0,1,0,1])]),
-    (np.array([3,7,2,3]), 6, False, [np.array([1,1,0,0]),
-                                    np.array([1,0,0,1]),
-                                    np.array([0,1,0,1])]),                                 
-])
+@pytest.mark.parametrize('content,constraint,valid,expected', [(
+    [3,2,5,6,4],
+    8,
+    True,
+    [[1,0,1,0,0],
+     [0,1,0,1,0]],
+), (
+    [3,2,5,6,4],
+    5,
+    False,
+    [[1,0,1,0,0],
+     [0,1,0,1,0]],
+), (
+    [3,2,5,6,4],
+    8,
+    False,
+    [[1,0,1,0,0]],
+), (
+    [3,3,2,3],
+    6,
+    True,
+    [[1,1,0,0],
+     [1,0,0,1],
+     [0,1,0,1]],
+), (
+    [3,3,2,3],
+    6,
+    False,
+    [[1,0,0,1],
+     [0,1,0,1]],
+), (
+    [3,7,2,3],
+    6,
+    False,
+    [[1,1,0,0],
+     [1,0,0,1],
+     [0,1,0,1]],
+)])
 def test_iter_valid_states(content, constraint, valid, expected):
     from rullo.solver import iter_valid_states
-    
-    expected_set = set(map(
-        tuple, expected
-    )) 
-    result_set = set(map(
-        tuple, iter_valid_states(content, constraint)
-    ))
+    from rullo.state_set import StateSet
+
+    content = np.array(content)
+
+    expected_set = StateSet(expected)
+    result_set = StateSet(iter_valid_states(content, constraint))
     
     if valid:
         assert expected_set == result_set

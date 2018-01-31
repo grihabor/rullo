@@ -8,7 +8,7 @@ class Outcome:
         )
 
     @classmethod
-    def from_state_set(state_set):
+    def from_state_set(cls, state_set):
         return Outcome({
             (index,)
             for index

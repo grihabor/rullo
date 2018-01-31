@@ -4,8 +4,13 @@ import numpy as np
 
 class StateSet:
     def __init__(self, states):
-        states = list(states)
-        self._states = np.asarray(states, dtype=bool)
+        states = [
+            tuple(state)
+            for state
+            in states
+        ]
+        sorted_states = sorted(states)
+        self._states = np.asarray(sorted_states, dtype=bool)
 
     def __iter__(self):
         yield from self._states
