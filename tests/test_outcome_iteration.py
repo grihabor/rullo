@@ -7,7 +7,7 @@ import pytest
 def test_outcome_iteration(content, constraint, pairs, expected):
     from rullo.solver import _cycle
     pairs = [
-        StateSet(state_set), Outcome(outcome)
+        (StateSet(state_set), Outcome(outcome))
         for state_set, outcome
         in pairs
     ]
