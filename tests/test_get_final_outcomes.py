@@ -14,7 +14,7 @@ import pytest
     
     ]),
 ])
-def test_outcome_intersection(content, row_constraints, column_constraints, expected):
+def test_get_final_outcomes(content, row_constraints, column_constraints, expected):
     from rullo.rullo import Rullo
     from rullo.solver import get_final_outcomes
 
