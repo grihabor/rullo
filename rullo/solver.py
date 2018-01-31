@@ -6,6 +6,7 @@ from collections import Counter
 from .state_set import StateSet
 from .checks import is_line_valid
 from .intersection import _outcome_intersection
+from .outcome import outcome
 
 
 def iter_states(n_pos):
@@ -32,6 +33,7 @@ def iter_valid_states(content, constraint):
 class Dependency:
     def __init__(self, state_set, index_pair, outcome):
         assert isinstance(state_set, StateSet)
+        assert isinstance(outcome, Outcome)
         
         self.state_set = state_set
         self.index_pair = index_pair
