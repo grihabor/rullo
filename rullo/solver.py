@@ -69,7 +69,7 @@ def _indices_to_outcome(indices, prev_outcome):
         for i, index_list
         in enumerate(indices)
     ]
-    return sum(nested, [])
+    return Outcome(sum(nested, []))
 
 
 class SolveError(Exception):
