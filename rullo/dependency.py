@@ -11,3 +11,10 @@ class Dependency:
         self.index_pair = index_pair
         self.outcome = outcome
 
+    def __repr__(self):
+        return '<Dependency[{}, {}, {}]>'.format(
+            self.state_set,
+            self.index_pair,
+            self.outcome,
+        )
+

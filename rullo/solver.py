@@ -28,7 +28,7 @@ def iter_valid_states(content, constraint):
             yield state
 
 
-def calculate_matching_indices(target_state_set, dependency):
+def calculate_matching_indices(target_state_set, dependency: Dependency):
     dep = dependency
     print()
     print('Calculate matching indices')
