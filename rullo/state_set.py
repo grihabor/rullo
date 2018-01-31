@@ -26,8 +26,14 @@ class StateSet:
         return _indefeasible_indices(self._states)
 
     def __len__(self):
-        return self._states.shape[0]
-        
+        return (
+            self._states.shape[0]
+            if self._states.shape
+            else 0
+        )
+    
+    def is_empty(self):
+        return len(self) == 0
         
 def _state_set_filter(states, index, flag):
     """

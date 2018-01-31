@@ -6,3 +6,11 @@ class Outcome:
             if variants
             else []
         )
+
+    @classmethod
+    def from_state_set(state_set):
+        return Outcome([
+            (index,)
+            for index
+            in range(len(state_set))
+        ])

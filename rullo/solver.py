@@ -40,14 +40,6 @@ class Dependency:
         self.outcome = outcome
 
 
-def _initialize_outcome(state_set):
-    return [
-        (index,)
-        for index
-        in range(len(state_set))
-    ]
-
-
 def _matching_outcome_indices(target_state_set, dependency):
     dep = dependency
     print(target_state_set[0])
@@ -80,9 +72,15 @@ def _indices_to_outcome(indices, prev_outcome):
     return sum(nested, [])
 
 
+class SolveError(Exception):
+    pass
+
 def _calculate_outcomes(target_state_set, *dependencies):
+    if target_state_set.is_empty():
+        raise SolveError('Target state set is empty')
+    
     if not dependencies:
-        return _initialize_outcome(target_state_set)
+        return Outcome.from_state_set(target_state_set)
 
     outcomes = []
 
