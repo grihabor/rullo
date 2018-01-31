@@ -1,11 +1,9 @@
 import itertools
 import numpy as np
-from collections import Counter
 
 from .dependency import Dependency
 from .state_set import StateSet
 from .checks import is_line_valid
-from .intersection import calculate_outcome_intersection
 from .outcome import Outcome
 
 
@@ -61,10 +59,10 @@ def calculate_outcome_dependency_intersection(target_state_set, *dependencies):
         outcome = Outcome.from_indices(indices, dep.outcome)
         outcomes.append(outcome)
 
-    return calculate_outcome_intersection(outcomes)
+    return Outcome.from_outcome_intersection(outcomes)
 
 
-def calculate_next_outcome_pair(content, constraint, pairs, j):
+def calculate_next_outcome_pair(content, constraint, pairs, index):
     """
     
     Attributes
@@ -78,7 +76,7 @@ def calculate_next_outcome_pair(content, constraint, pairs, j):
     )
             
     deps = [
-        Dependency(state_set, [j, i], outcome)
+        Dependency(state_set, [index, i], outcome)
         for i, (state_set, outcome)
         in enumerate(pairs)
     ]

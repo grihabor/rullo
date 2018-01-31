@@ -1,6 +1,8 @@
 import itertools
 from collections import Counter
 
+from rullo.intersection import calculate_outcome_intersection
+
 
 class Outcome:
     def __init__(self, variants=None):
@@ -27,7 +29,11 @@ class Outcome:
             for index
             in range(len(state_set))
         })
-    
+
+    @classmethod
+    def from_outcome_intersection(cls, outcomes):
+        return Outcome(calculate_outcome_intersection(outcomes))
+
     def __repr__(self):
         return '<Outcome {}>'.format(self._variants)
         

@@ -8,8 +8,8 @@ import pytest
     ), [(1,3,2), (2,3,3), (1,1,1)],),
 ])
 def test_outcome_intersection(outcomes, expected):
-    from rullo.intersection import calculate_outcome_intersection
+    from rullo.outcome import Outcome
 
-    assert set(expected) == set(calculate_outcome_intersection(outcomes))
+    assert Outcome(expected) == Outcome.from_outcome_intersection(outcomes)
 
 
