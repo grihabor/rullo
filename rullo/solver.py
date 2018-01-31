@@ -70,6 +70,7 @@ def calculate_next_outcome_pair(content, constraint, pairs, index):
     content: 1-dim array
     constraint: int
     pairs: list of pairs (state_set, outcome)
+    index: int
     """
     target_state_set = StateSet(
         iter_valid_states(content, constraint)
