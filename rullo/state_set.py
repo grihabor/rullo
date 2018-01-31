@@ -4,6 +4,7 @@ import numpy as np
 
 class StateSet:
     def __init__(self, states):
+        states = list(states)
         self._states = np.asarray(states, dtype=bool)
 
     def __iter__(self):
