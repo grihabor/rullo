@@ -93,6 +93,14 @@ def _calculate_outcomes(target_state_set, *dependencies):
 
 
 def _cycle(content, constraint, pairs):
+    """
+    
+    Attributes
+    ----------
+    content: 1-dim array
+    constraint: int
+    pairs: list of pairs (state_set, outcome)
+    """
     target_state_set = StateSet(
         iter_valid_states(content, constraint)
     )
@@ -104,9 +112,8 @@ def _cycle(content, constraint, pairs):
     ]
             
     outcome = _calculate_outcomes(target_state_set, *deps)
-    pairs.append(
-        (target_state_set, outcome)
-    )
+    
+    return target_state_set, outcome
             
 
 def get_final_outcomes(rullo):
@@ -116,18 +123,20 @@ def get_final_outcomes(rullo):
     
     for i in range(max(rullo.content.shape)):
         if i < rullo.content.shape[0]:
-            _cycle(
+            pair = _cycle(
                 rullo.content[i, :], 
                 rullo.row_constraints[i],
                 row_pairs,
             )
+            row_pairs.append(pair)
             
         if i < rullo.content.shape[1]:
-            _cycle(
+            pair = _cycle(
                 rullo.content[:, i], 
                 rullo.column_constraints[i],
                 column_pairs,
             )
+            column_pairs.append(pair)
     
     return (
         row_pairs[1]
