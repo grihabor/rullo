@@ -30,6 +30,12 @@ def iter_valid_states(content, constraint):
 
 def calculate_matching_indices(target_state_set, dependency):
     dep = dependency
+    print()
+    print('Calculate matching indices')
+    print('--------------------------')
+    print(target_state_set)
+    print(dependency)
+    print()
     return [[
         index
         for index, dep_state
