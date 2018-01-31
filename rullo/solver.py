@@ -86,3 +86,49 @@ def _calculate_outcomes(target_state_set, *dependencies):
 
     return _outcome_intersection(outcomes)
 
+
+def _cycle(content, constraint, pairs):
+    target_state_set = StateSet(
+        iter_valid_states(content, constraint)
+    )
+            
+    row_deps = [
+        Dependency(state_set, [j, i], outcome)
+        for i, (state_set, outcome)
+        in enumerate(row_pairs)
+    ]
+            
+    outcome = _calculate_outcomes(target_state_set, *row_deps)
+    pairs.append(
+        (target_state_set, outcome)
+    )
+            
+
+def get_final_outcomes(rullo):
+
+    row_pairs = []
+    column_pairs = []
+    
+    for i in range(max(rullo.content.shape))
+        if i < rullo.content.shape[0]:
+            _cycle(
+                rullo.content[i, :], 
+                rullo.row_constraints[i],
+                row_pairs,
+            )
+            
+        if i < rullo.content.shape[1]:
+            _cycle(
+                rullo.content[:, i], 
+                rullo.column_constraints[i],
+                column_pairs,
+            )
+    
+    return (
+        row_pairs[1]
+        if len(row_pairs) > len(column_pairs)
+        else column_pairs[1]
+    )
+        
+        
+        
