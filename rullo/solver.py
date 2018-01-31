@@ -92,13 +92,13 @@ def _cycle(content, constraint, pairs):
         iter_valid_states(content, constraint)
     )
             
-    row_deps = [
+    deps = [
         Dependency(state_set, [j, i], outcome)
         for i, (state_set, outcome)
-        in enumerate(row_pairs)
+        in enumerate(pairs)
     ]
             
-    outcome = _calculate_outcomes(target_state_set, *row_deps)
+    outcome = _calculate_outcomes(target_state_set, *deps)
     pairs.append(
         (target_state_set, outcome)
     )
