@@ -29,7 +29,7 @@ def _intersect(*outcome_pair):
     ]
     
 
-def _outcome_intersection(outcomes):
+def calculate_outcome_intersection(outcomes):
 
     intersection = functools.reduce(
         _intersect,

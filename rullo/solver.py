@@ -1,11 +1,11 @@
 import itertools
-import functools
 import numpy as np
 from collections import Counter
 
+from .dependency import Dependency
 from .state_set import StateSet
 from .checks import is_line_valid
-from .intersection import _outcome_intersection
+from .intersection import calculate_outcome_intersection
 from .outcome import Outcome
 
 
@@ -30,14 +30,6 @@ def iter_valid_states(content, constraint):
             yield state
 
 
-class Dependency:
-    def __init__(self, state_set, index_pair, outcome):
-        assert isinstance(state_set, StateSet)
-        assert isinstance(outcome, Outcome)
-        
-        self.state_set = state_set
-        self.index_pair = index_pair
-        self.outcome = outcome
 
 
 def calculate_matching_indices(target_state_set, dependency):
@@ -49,25 +41,6 @@ def calculate_matching_indices(target_state_set, dependency):
         in enumerate(dep.state_set)
         if state[dep.index_pair[0]] == dep_state[dep.index_pair[1]]
     ] for state in target_state_set]
-
-
-def calculate_outcome_from_indices(indices, prev_outcome):
-    flat = itertools.chain.from_iterable(indices)
-    c = Counter(flat)
-    nested = [
-        [
-            (
-                prev_outcome[index] + (i,)
-                if c[index] > 1
-                else prev_outcome[index]
-            )
-            for index
-            in index_list
-        ]
-        for i, index_list
-        in enumerate(indices)
-    ]
-    return Outcome(sum(nested, []))
 
 
 class SolveError(Exception):
@@ -85,13 +58,13 @@ def calculate_outcome_dependency_intersection(target_state_set, *dependencies):
 
     for dep in dependencies:
         indices = calculate_matching_indices(target_state_set, dep)
-        outcome = calculate_outcome_from_indices(indices, dep.outcome)
+        outcome = Outcome.from_indices(indices, dep.outcome)
         outcomes.append(outcome)
 
-    return _outcome_intersection(outcomes)
+    return calculate_outcome_intersection(outcomes)
 
 
-def calculate_next_outcome_pair(content, constraint, pairs):
+def calculate_next_outcome_pair(content, constraint, pairs, j):
     """
     
     Attributes
@@ -126,6 +99,7 @@ def calculate_final_outcome(rullo):
                 rullo.content[i, :], 
                 rullo.row_constraints[i],
                 row_pairs,
+                i,
             )
             row_pairs.append(pair)
             
@@ -134,6 +108,7 @@ def calculate_final_outcome(rullo):
                 rullo.content[:, i], 
                 rullo.column_constraints[i],
                 column_pairs,
+                i,
             )
             column_pairs.append(pair)
     
