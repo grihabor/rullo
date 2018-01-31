@@ -29,8 +29,9 @@ def test_matching_outcome_indices(target, indices, outcome, expected):
     from rullo.state_set import StateSet
 
     state_set = StateSet(target)
+    outcome = Outcome(outcome)
     dependency = Dependency(state_set, indices, outcome)
 
-    assert _matching_outcome_indices(state_set, dependency) == expected
+    assert expected == _matching_outcome_indices(state_set, dependency)
 
 
