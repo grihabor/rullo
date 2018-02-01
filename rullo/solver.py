@@ -28,20 +28,21 @@ def iter_valid_states(content, constraint):
             yield state
 
 
-def calculate_matching_indices(target_state_set, dependency: Dependency):
-    dep = dependency
+def calculate_matching_indices(target_state_set, dep_state_set, index_pair):
+    
     print()
     print('Calculate matching indices')
     print('--------------------------')
     print(target_state_set)
-    print(dependency)
+    print(dep_state_set)
+    print(index_pair)
     print()
     
     result = [[
         index
         for index, dep_state
-        in enumerate(dep.state_set)
-        if state[dep.index_pair[0]] == dep_state[dep.index_pair[1]]
+        in enumerate(dep_state_set)
+        if state[index_pair[0]] == dep_state[index_pair[1]]
     ] for state in target_state_set]
     
     print('Result')
@@ -65,7 +66,11 @@ def calculate_outcome_dependency_intersection(target_state_set, *dependencies):
     outcomes = []
 
     for dep in dependencies:
-        indices = calculate_matching_indices(target_state_set, dep)
+        indices = calculate_matching_indices(
+            target_state_set,
+            dep.state_set,
+            dep.index_pair,
+        )
         outcome = Outcome.from_indices(indices, dep.outcome)
         outcomes.append(outcome)
 
