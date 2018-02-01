@@ -107,7 +107,7 @@ def calculate_final_outcome(rullo):
             pair = calculate_next_outcome_pair(
                 rullo.content[i, :], 
                 rullo.row_constraints[i],
-                row_pairs,
+                column_pairs,
                 i,
             )
             row_pairs.append(pair)
@@ -116,7 +116,7 @@ def calculate_final_outcome(rullo):
             pair = calculate_next_outcome_pair(
                 rullo.content[:, i], 
                 rullo.column_constraints[i],
-                column_pairs,
+                row_pairs,
                 i,
             )
             column_pairs.append(pair)
