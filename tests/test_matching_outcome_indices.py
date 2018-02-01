@@ -28,7 +28,6 @@ def test_matching_outcome_indices(target, indices, expected):
     from rullo.outcome import Outcome
     
     state_set = StateSet(target)
-    outcome = Outcome(outcome)
     
     assert expected == calculate_matching_indices(state_set, state_set, indices)
 
