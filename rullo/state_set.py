@@ -26,7 +26,16 @@ class StateSet:
         return self
 
     def __repr__(self):
-        return repr(self._states)
+        head = '<StateSet {'
+        tail = '}>'
+        if not self._states:
+            return ''.join([head, tail])
+            
+        return '\n'.join([head] + [
+            '    {}'.format(tuple(state))
+            for state
+            in np.asarray(self._states, dtype=np.int)
+        ] + [tail])
 
     def indefeasible_indices(self):
         return _indefeasible_indices(self._states)
@@ -40,7 +49,8 @@ class StateSet:
     
     def is_empty(self):
         return len(self) == 0
-        
+    
+    
 def _state_set_filter(states, index, flag):
     """
 
