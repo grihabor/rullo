@@ -36,13 +36,20 @@ def calculate_matching_indices(target_state_set, dependency: Dependency):
     print(target_state_set)
     print(dependency)
     print()
-    return [[
+    
+    result = [[
         index
         for index, dep_state
         in enumerate(dep.state_set)
         if state[dep.index_pair[0]] == dep_state[dep.index_pair[1]]
     ] for state in target_state_set]
-
+    
+    print('Result')
+    print('------')
+    print(result)
+    print()
+    
+    return result
 
 class SolveError(Exception):
     pass
