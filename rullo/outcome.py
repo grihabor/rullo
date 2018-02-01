@@ -45,6 +45,14 @@ class Outcome:
 
 
 def _calculate_outcome_from_indices(indices_list, prev_outcome: Outcome):
+
+    print()
+    print('Calculate outcome from indices')
+    print('------------------------------')
+    print(indices_list)
+    print(prev_outcome)
+    print()
+    
     flat = itertools.chain.from_iterable(indices_list)
     c = Counter(flat)
     nested = [
@@ -60,4 +68,11 @@ def _calculate_outcome_from_indices(indices_list, prev_outcome: Outcome):
         for i, indices
         in enumerate(indices_list)
     ]
-    return Outcome(sum(nested, []))
+    result = Outcome(sum(nested, []))
+    
+    print('Result')
+    print('------')
+    print(result)
+    print()
+    
+    return result
