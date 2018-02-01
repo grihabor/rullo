@@ -28,7 +28,7 @@ class StateSet:
     def __repr__(self):
         head = '<StateSet {'
         tail = '}>'
-        if not self._states:
+        if self._states.shape[0] == 0:
             return ''.join([head, tail])
             
         return '\n'.join([head] + [
