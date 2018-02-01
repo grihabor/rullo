@@ -10,7 +10,7 @@ _states = np.array([
 
 
 
-@pytest.mark.parametrize('target,indices,outcome,expected', [
+@pytest.mark.parametrize('target,indices,expected', [
     (
         _states,
         [0, 0],
