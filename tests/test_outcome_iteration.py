@@ -7,7 +7,7 @@ import numpy as np
         [[0,1,1],
          [1,1,0],
          [1,0,1]],
-        [(0,), (1,), (2,)]
+        [((0,),), ((1,),), ((2,),)]
     )),
 ])
 def test_outcome_iteration(content, constraint, pairs, index, expected):

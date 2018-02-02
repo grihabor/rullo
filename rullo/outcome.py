@@ -13,7 +13,7 @@ class Outcome:
         )
 
         self._variants = (
-            sorted(variants)
+            variants
             if variants
             else []
         )
@@ -24,11 +24,11 @@ class Outcome:
 
     @classmethod
     def from_state_set(cls, state_set):
-        return Outcome({
-            (index,)
+        return Outcome([
+            ((index,),)
             for index
             in range(len(state_set))
-        })
+        ])
 
     @classmethod
     def from_outcome_intersection(cls, outcomes):
@@ -38,7 +38,7 @@ class Outcome:
         return '<Outcome {}>'.format(self._variants)
         
     def __eq__(self, other):
-        return self._variants == other._variants
+        return sorted(self._variants) == sorted(other._variants)
 
     def __getitem__(self, item):
         return self._variants[item]
@@ -56,19 +56,21 @@ def _calculate_outcome_from_indices(indices_list, prev_outcome: Outcome):
     flat = itertools.chain.from_iterable(indices_list)
     c = Counter(flat)
     nested = [
-        [
+        tuple(
             (
-                prev_outcome[index] + (i,)
+                out_tuple + (i,)
                 if c[index] > 1
-                else prev_outcome[index]
+                else out_tuple
             )
             for index
             in indices
-        ]
+            for out_tuple
+            in prev_outcome[index]
+        )
         for i, indices
         in enumerate(indices_list)
     ]
-    result = Outcome(sum(nested, []))
+    result = Outcome(nested)
     
     print('Result')
     print('------')
