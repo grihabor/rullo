@@ -80,7 +80,7 @@ def calculate_next_outcome_pair(content, constraint, pairs, index):
     )
             
     deps = [
-        Dependency(state_set, [index, i], outcome)
+        Dependency(state_set, [i, index], outcome)
         for i, (state_set, outcome)
         in enumerate(pairs)
     ]
