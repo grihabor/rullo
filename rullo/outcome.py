@@ -1,7 +1,8 @@
 import itertools
 from collections import Counter
 
-from rullo.intersection import calculate_outcome_intersection
+from .intersection import calculate_outcome_intersection
+from .utils import print_debug_info
 
 
 class Outcome:
@@ -55,15 +56,9 @@ class Outcome:
         return self._variants[item]
 
 
+@print_debug_info
 def _calculate_outcome_from_indices(indices_list, prev_outcome: Outcome):
 
-    print()
-    print('Calculate outcome from indices')
-    print('------------------------------')
-    print(indices_list)
-    print(prev_outcome)
-    print()
-    
     flat = itertools.chain.from_iterable(indices_list)
     c = Counter(flat)
     nested = [
@@ -81,11 +76,5 @@ def _calculate_outcome_from_indices(indices_list, prev_outcome: Outcome):
         for i, indices
         in enumerate(indices_list)
     ]
-    result = Outcome(nested)
-    
-    print('Result')
-    print('------')
-    print(result)
-    print()
-    
-    return result
+    return Outcome(nested)
+   
