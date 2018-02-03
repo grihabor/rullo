@@ -50,7 +50,16 @@ class Outcome:
         ])
         
     def __eq__(self, other):
-        return sorted(self._variants) == sorted(other._variants)
+        section_pairs = zip(
+            self._variants,
+            other._variants,
+        )
+        return all(
+            sorted(x) == sorted(y)
+            for x, y
+            in section_pairs
+        )
+        
 
     def __getitem__(self, item):
         return self._variants[item]
