@@ -1,6 +1,7 @@
 import functools
 import itertools
 from collections import Counter
+from .utils import print_debug_info
 
 
 def _have_the_same_beginning(x, y):
@@ -29,6 +30,7 @@ def _intersect(*outcome_pair):
     ]
     
 
+@print_debug_info
 def calculate_outcome_intersection(outcomes):
 
     intersection = functools.reduce(
