@@ -23,6 +23,7 @@ import pytest
 def test_outcome_intersection(outcomes, expected):
     from rullo.outcome import Outcome
 
+    outcomes = list(map(Outcome, outcomes))
     assert Outcome(expected) == Outcome.from_outcome_intersection(outcomes)
 
 

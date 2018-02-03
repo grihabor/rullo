@@ -20,10 +20,8 @@ def _longest(x, y):
 
 
 @print_debug_info
-def _intersect_sections(*outcome_pair):
-    assert 2 == len(outcome_pair) 
-    
-    product = itertools.product(*outcome_pair)
+def _intersect_sections(x, y):
+    product = itertools.product(x, y)
     return tuple(
         _longest(*pair)
         for pair in product
