@@ -96,6 +96,13 @@ def calculate_final_outcome(rullo):
     column_pairs = []
     
     for i in range(max(rullo.content.shape)):
+        print()
+        print(
+            '+' * 5 + ' ' * 3, 
+            index, 
+            ' ' * 3 + '+' * 5,
+        )
+        print()
         if i < rullo.content.shape[0]:
             pair = calculate_next_outcome_pair(
                 rullo.content[i, :], 
