@@ -19,7 +19,7 @@ def _longest(x, y):
     )
 
 
-def _intersect_sections(outcome_pair):
+def _intersect_sections(*outcome_pair):
     assert 2 == len(outcome_pair) 
     
     product = itertools.product(*outcome_pair)
@@ -32,7 +32,7 @@ def _intersect_sections(outcome_pair):
 
 def _intersect(*outcome_pair):
     return [
-        _intersect_sections(section_pair)
+        _intersect_sections(*section_pair)
         for section_pair
         in zip(*outcome_pair)
     ]
