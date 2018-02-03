@@ -99,7 +99,7 @@ def calculate_final_outcome(rullo):
         print()
         print(
             '+' * 5 + ' ' * 3, 
-            index, 
+            i, 
             ' ' * 3 + '+' * 5,
         )
         print()
