@@ -46,7 +46,7 @@ class Outcome:
             in self._variants
         ] + [
             '}>'
-        ]
+        ])
         
     def __eq__(self, other):
         return sorted(self._variants) == sorted(other._variants)
