@@ -47,7 +47,7 @@ def calculate_outcome_intersection(outcomes):
         outcomes[1:],
         outcomes[0],
     )
-    
+    '''
     c = Counter(intersection)
     result = [
         (
@@ -58,6 +58,6 @@ def calculate_outcome_intersection(outcomes):
         for index, item
         in enumerate(intersection)
     ]
-    
+    '''
     return Outcome(result)
     
