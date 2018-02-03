@@ -7,7 +7,7 @@ def arg_pairs(arg_names, args, kwargs):
     yield from kwargs.items()
         
 
-def pretty_function_name(f)
+def pretty_function_name(f):
     return f.__name__
 
 
