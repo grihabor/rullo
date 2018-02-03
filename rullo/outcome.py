@@ -35,7 +35,18 @@ class Outcome:
         return Outcome(calculate_outcome_intersection(outcomes))
 
     def __repr__(self):
-        return '<Outcome {}>'.format(self._variants)
+        if not self._variants:
+            return '<Outcome {}>'
+            
+        return '\n'.join([
+            '<Outcome {',
+        ] + [
+            str(list(section))
+            for section
+            in self._variants
+        ] + [
+            '}>'
+        ]
         
     def __eq__(self, other):
         return sorted(self._variants) == sorted(other._variants)
