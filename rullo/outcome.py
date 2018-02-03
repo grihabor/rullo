@@ -53,7 +53,10 @@ class Outcome:
         return sorted(self._variants) == sorted(other._variants)
 
     def __getitem__(self, item):
-        return self._variants[item]
+        try:
+            return self._variants[item]
+        except IndexError:
+            return tuple()
 
 
 @print_debug_info
