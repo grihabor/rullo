@@ -29,7 +29,6 @@ def iter_valid_states(content, constraint):
             yield state
 
 
-@print_debug_info
 def calculate_matching_indices(target_state_set, dep_state_set, index_pair):
     
     return [[
@@ -44,6 +43,7 @@ class SolveError(Exception):
     pass
 
 
+@print_debug_info
 def calculate_outcome_dependency_intersection(target_state_set, *dependencies):
     if target_state_set.is_empty():
         raise SolveError('Target state set is empty')

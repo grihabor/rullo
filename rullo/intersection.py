@@ -19,6 +19,7 @@ def _longest(x, y):
     )
 
 
+@print_debug_info
 def _intersect_sections(*outcome_pair):
     assert 2 == len(outcome_pair) 
     
