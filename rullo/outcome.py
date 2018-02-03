@@ -42,7 +42,7 @@ class Outcome:
         return '\n'.join([
             '<Outcome {',
         ] + [
-            str(list(section))
+            '    ' + str(list(section))
             for section
             in self._variants
         ] + [
