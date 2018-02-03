@@ -19,16 +19,24 @@ def _longest(x, y):
     )
 
 
-def _intersect(*outcome_pair):
+def _intersect_sections(outcome_pair):
     assert 2 == len(outcome_pair) 
     
     product = itertools.product(*outcome_pair)
-    return [
+    return tuple(
         _longest(*pair)
         for pair in product
         if _have_the_same_beginning(*pair)
+    )
+
+
+def _intersect(*outcome_pair):
+    return [
+        _intersect_sections(section_pair)
+        for section_pair
+        in zip(*outcome_pair)
     ]
-    
+
 
 @print_debug_info
 def calculate_outcome_intersection(outcomes):
