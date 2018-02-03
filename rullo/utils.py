@@ -25,7 +25,7 @@ def print_args(kwargs):
         
     
 def print_debug_info(func):
-    arg_names = inspect.getargspec(func)[0]
+    arg_names = inspect.getfullargspec(func)[0]
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         pairs = arg_pairs(arg_names, args, kwargs)
