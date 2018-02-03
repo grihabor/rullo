@@ -7,8 +7,8 @@ import pytest
      [(1,3,2), (2,3,3), (1,1,1)],),
 ])
 def test_intersect(x, y, expected):
-    from rullo.intersection import _intersect
+    from rullo.intersection import _intersect_sections
 
-    assert set(expected) == set(_intersect(x, y))
+    assert set(expected) == set(_intersect_sections(x, y))
 
 
