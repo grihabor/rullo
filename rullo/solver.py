@@ -5,6 +5,7 @@ from .dependency import Dependency
 from .state_set import StateSet
 from .checks import is_line_valid
 from .outcome import Outcome
+from .utils import print_debug_info
 
 
 def iter_all_states(n_pos):
@@ -28,29 +29,16 @@ def iter_valid_states(content, constraint):
             yield state
 
 
+@print_debug_info
 def calculate_matching_indices(target_state_set, dep_state_set, index_pair):
     
-    print()
-    print('Calculate matching indices')
-    print('--------------------------')
-    print(target_state_set)
-    print(dep_state_set)
-    print(index_pair)
-    print()
-    
-    result = [[
+    return [[
         index
         for index, dep_state
         in enumerate(dep_state_set)
         if state[index_pair[0]] == dep_state[index_pair[1]]
     ] for state in target_state_set]
     
-    print('Result')
-    print('------')
-    print(result)
-    print()
-    
-    return result
 
 class SolveError(Exception):
     pass
