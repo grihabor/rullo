@@ -53,6 +53,7 @@ class Outcome:
         section_pairs = itertools.zip_longest(
             self._variants,
             other._variants,
+            fillvalue=(,),
         )
         return all(
             sorted(x) == sorted(y)
