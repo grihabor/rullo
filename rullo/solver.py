@@ -122,10 +122,10 @@ def calculate_final_outcome(rullo):
             column_pairs.append(pair)
     
     return (
-        row_pairs[1]
+        row_pairs[-1]
         if len(row_pairs) > len(column_pairs)
-        else column_pairs[1]
-    )
+        else column_pairs[-1]
+    )[1]
         
         
         
