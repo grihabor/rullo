@@ -37,7 +37,7 @@ def print_debug_info(func):
         result = func(*args, **kwargs)
         
         print()
-        print_args({'Result': result})
+        print_args({'Result ({})'.format(pretty_function_name(func)): result})
         print()
         
         return result

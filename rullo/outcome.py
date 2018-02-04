@@ -65,7 +65,6 @@ class Outcome:
         return self._variants[item]
 
 
-@print_debug_info
 def _calculate_outcome_from_indices(indices_list, prev_outcome: Outcome):
 
     flat = itertools.chain.from_iterable(indices_list)
