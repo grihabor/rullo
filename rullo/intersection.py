@@ -40,7 +40,6 @@ def _intersect(*outcome_pair):
 
 @print_debug_info
 def calculate_outcome_intersection(outcomes):
-    from .outcome import Outcome
     
     intersection = functools.reduce(
         _intersect,
@@ -61,5 +60,5 @@ def calculate_outcome_intersection(outcomes):
     ]
     '''
     
-    return Outcome(result)
+    return result
     
