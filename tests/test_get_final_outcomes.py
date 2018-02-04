@@ -22,7 +22,7 @@ import pytest
     ], [
         3,6
     ], [
-        ((0,),)
+        
     ]),
 ])
 def test_get_final_outcomes(content, row_constraints, column_constraints, expected):

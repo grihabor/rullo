@@ -50,7 +50,7 @@ class Outcome:
         ])
         
     def __eq__(self, other):
-        section_pairs = zip(
+        section_pairs = itertools.zip_longest(
             self._variants,
             other._variants,
         )
