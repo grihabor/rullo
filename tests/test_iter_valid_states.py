@@ -56,6 +56,6 @@ def test_iter_valid_states(content, constraint, valid, expected):
     result_set = sort(iter_valid_states(content, constraint))
     
     if valid:
-        assert expected_set == result_set
+        assert all(expected_set == result_set)
     else:
-        assert expected_set != result_set
+        assert any(expected_set != result_set)
