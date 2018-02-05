@@ -1,5 +1,5 @@
 import pytest
-
+import numpy as np
 
 
 @pytest.mark.parametrize('content,row_constraints,column_constraints,expected', [
@@ -8,7 +8,38 @@ import pytest
       [3,3,3]],
      [6,6,6],
      [6,6,6],
-     []),
+     {
+         np.array([
+             [0,1,1],
+             [1,0,1],
+             [1,1,0],
+         ]),
+         np.array([
+             [0,1,1],
+             [1,1,0],
+             [1,0,1],
+         ]),
+         np.array([
+             [1,0,1],
+             [0,1,1],
+             [1,1,0],
+         ]),
+         np.array([
+             [1,0,1],
+             [1,1,0],
+             [0,1,1],
+         ]),
+         np.array([
+             [1,1,0],
+             [0,1,1],
+             [1,0,1],
+         ]),
+         np.array([
+             [1,1,0],
+             [1,0,1],
+             [0,1,1],
+         ]),
+     }),
     
 ])
 def test_solve(content, row_constraints, column_constraints, expected):

@@ -40,13 +40,13 @@ def possible_states(rullo):
 def solve(rullo):
     states = possible_states(rullo)
     
-    result = []
+    result = set()
     for state in states:
         if is_board_valid(rullo.content,
                           state,
                           rullo.row_constraints,
                           rullo.column_constraints):
-            result.append(state)
+            result.add(state)
     
     return result
     
