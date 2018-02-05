@@ -44,9 +44,16 @@ def test_iter_valid_states(content, constraint, valid, expected):
     from rullo.solver import iter_valid_states
     
     content = np.array(content)
-
-    expected_set = expected
-    result_set = iter_valid_states(content, constraint)
+    
+    def sort(x):
+        return sorted([
+            tuple(row)
+            for row 
+            in x
+        ])
+        
+    expected_set = sort(expected)
+    result_set = sort(iter_valid_states(content, constraint))
     
     if valid:
         assert expected_set == result_set
