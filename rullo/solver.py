@@ -3,7 +3,7 @@ import numpy as np
 
 from .dependency import Dependency
 from .state_set import StateSet
-from .checks import is_line_valid
+from .checks import is_line_valid, is_board_valid
 from .outcome import Outcome
 from .utils import print_debug_info
 
@@ -127,5 +127,29 @@ def calculate_final_outcome(rullo):
         else column_pairs[-1]
     )[1]
         
+
+def possible_states(rullo):
+    row_states = [
+        list(iter_valid_states(row, constraint))
+        for row, constraint
+        in zip(rullo.content, rullo.row_constraints)
+    ]
+    rullo_states = list(itertools.product(*row_states))
+    
+    return np.asarray(rullo_states)
         
         
+def solve(rullo):
+    states = possible_states(rullo)
+    
+    result = []
+    for state in states:
+        if is_board_valid(rullo.content,
+                          state,
+                          rullo.row_constraints,
+                          rullo.column_constraints):
+            result.append(state)
+    
+    return result
+    
+    
