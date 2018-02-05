@@ -42,12 +42,11 @@ import numpy as np
 )])
 def test_iter_valid_states(content, constraint, valid, expected):
     from rullo.solver import iter_valid_states
-    from rullo.state_set import StateSet
-
+    
     content = np.array(content)
 
-    expected_set = StateSet(expected)
-    result_set = StateSet(iter_valid_states(content, constraint))
+    expected_set = expected
+    result_set = iter_valid_states(content, constraint)
     
     if valid:
         assert expected_set == result_set
