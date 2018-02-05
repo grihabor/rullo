@@ -1,16 +1,12 @@
 import numpy as np
 import csv
 
-from rullo.solver import iter_valid_states
-from rullo.state_set import StateSet
-
 
 class Rullo:
     def __init__(self,
                  content,
                  row_constraints,
-                 column_constraints,
-                 state=None):
+                 column_constraints,):
         """Creates a rullo board
 
         Attributes
@@ -29,11 +25,7 @@ class Rullo:
         self.content = np.asarray(content, dtype=np.int)
         self.row_constraints = np.asarray(row_constraints, dtype=np.int)
         self.column_constraints = np.asarray(column_constraints, dtype=np.int)
-        self.state = (
-            np.zeros(self.content.shape, dtype=np.bool)
-            if not state
-            else np.asarray(state, dtype=np.bool)
-        )
+        
 
     @classmethod
     def from_csv(cls, f):
@@ -51,22 +43,4 @@ class Rullo:
                    row_constraints,
                    column_constraints)
     
-    def solve(self):
-        self.state = _solve_board(self)
-        return self
-
-
-def _all_state_sets(content, constraints):
-    return [
-        StateSet(iter_valid_states(row, constraint))
-        for row, constraint
-        in zip(content, constraints)
-    ]
-
-
-def _solve_board(rullo: Rullo):
-    state_storage = [
-        _all_state_sets(rullo.content, rullo.row_constraints),
-        _all_state_sets(np.transpose(rullo.content), rullo.column_constraints)
-    ]
-
+    
