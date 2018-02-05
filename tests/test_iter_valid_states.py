@@ -46,11 +46,7 @@ def test_iter_valid_states(content, constraint, valid, expected):
     content = np.array(content)
     
     def sort(x):
-        return sorted([
-            tuple(row)
-            for row 
-            in x
-        ])
+        return sorted(list(map(tuple, x)))
         
     expected_set = sort(expected)
     result_set = sort(iter_valid_states(content, constraint))
