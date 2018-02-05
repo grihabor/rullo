@@ -2,15 +2,16 @@ import pytest
 
 
 
-@pytest.mark.parametrize('content,row_constraints,column_constraints', [
+@pytest.mark.parametrize('content,row_constraints,column_constraints,expected', [
     ([[3,3,3],
       [3,3,3],
       [3,3,3]],
      [6,6,6],
-     [6,6,6]),
+     [6,6,6],
+     []),
     
 ])
-def test_solve(content, row_constraints, column_constraints):
+def test_solve(content, row_constraints, column_constraints, expected):
     from rullo.rullo import Rullo
     from rullo.solver import solve
     
@@ -18,5 +19,5 @@ def test_solve(content, row_constraints, column_constraints):
         content,
         row_constraints,
         column_constraints,
-    )
+    ))
     
