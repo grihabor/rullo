@@ -1,8 +1,8 @@
 import itertools
 import numpy as np
 
+from .rullo import Rullo
 from .checks import is_line_valid, is_board_valid
-
 
 
 def iter_all_states(n_pos):
@@ -35,9 +35,9 @@ def possible_states(rullo):
     rullo_states = list(itertools.product(*row_states))
     
     return np.asarray(rullo_states)
-        
-        
-def solve(rullo):
+
+
+def solve(rullo: Rullo):
     states = possible_states(rullo)
     
     result = []

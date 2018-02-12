@@ -42,14 +42,10 @@ import numpy as np
      ]),
     
 ])
-def test_solve(content, row_constraints, column_constraints, expected):
+def test_solve(content, row_constraints, column_constraints, expected, sort):
     from rullo.rullo import Rullo
     from rullo.solver import solve
-    
-    def sort(x):
-        x = np.asarray(x)
-        return np.sort(x, axis=0)
-    
+
     assert np.all(sort(expected) == sort(solve(Rullo(
         content,
         row_constraints,
