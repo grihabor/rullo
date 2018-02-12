@@ -50,9 +50,8 @@ def test_solve(content, row_constraints, column_constraints, expected):
         x = np.asarray(x)
         return np.sort(x, axis=0)
     
-    assert sort(expected) == sort(solve(Rullo(
+    assert np.all(sort(expected) == sort(solve(Rullo(
         content,
         row_constraints,
         column_constraints,
-    )))
-    
+    ))))
